@@ -1,0 +1,17 @@
+class Solution {
+    static char nonRepeatingChar(String s) {
+        char st[] = s.toCharArray();// converting string into character array 
+        // code here
+        HashMap<Character,Integer> hm = new HashMap<>();
+        int n = s.length();
+        for(int i = 0;i<n;i++){
+            //char c = s.charAt(i);
+            hm.put(st[i],hm.getOrDefault(st[i],0)+1); // storing in the hashmap
+        }
+        
+        for(int i = 0;i<n;i++){
+            if(hm.get(st[i]) == 1)return st[i]; // validating first non reapiting character 
+        }
+        return '$'; //here it means mention in the question that return -1;
+    }
+}
