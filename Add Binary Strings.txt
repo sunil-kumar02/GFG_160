@@ -1,0 +1,47 @@
+class Solution {
+    public String addBinary(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
+        int i = m-1;
+        int j = n-1;
+        int carry = 0;
+        StringBuilder ans = new StringBuilder();
+        while(i>=0 || j>=0){
+            int count1=0;
+            if(i>=0 && s1.charAt(i) == '1')count1++;
+            if(j>=0 && s2.charAt(j) == '1')count1++;
+            
+            if(count1 + carry == 0){
+                ans.append('0');
+                carry = 0;
+            }
+            else if(count1 + carry == 1){
+                ans.append('1');
+                carry = 0;
+            }
+            else if(count1 + carry == 2){
+                ans.append('0');
+                carry = 1;
+            }
+            else if(count1 + carry == 3){
+                ans.append('1');
+                carry = 1;
+            }
+            i--;
+            j--;
+        }
+        if(carry == 1){
+            ans.append('1');
+        }
+        ans.reverse();
+        int idx = 0;
+        while( idx < ans.length() && ans.charAt(idx) == '0'){
+            ans.deleteCharAt(idx);
+        }
+        return ans.toString();
+        // your code here
+    
+    }
+        // code here
+    
+}
